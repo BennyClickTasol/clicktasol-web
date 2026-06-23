@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Clicktasol – Digital Marketing Agency</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #D42B2B;
+    --red-dark: #A81F1F;
+    --red-light: #fdf2f2;
+    --black: #0f0f0f;
+    --dark: #1a1a1a;
+    --dark2: #242424;
+    --gray: #6b6b6b;
+    --gray-light: #f2f2f2;
+    --gray-mid: #d4d4d4;
+    --white: #ffffff;
+    --border: rgba(0,0,0,0.1);
+    --radius: 12px;
+  }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--black); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); z-index: 100; }
+  .logo { font-size: 22px; font-weight: 800; color: var(--black); letter-spacing: -0.5px; }
+  .logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta { background: var(--red); color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero { padding: 90px 40px 80px; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--black); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: rgba(212,43,43,0.08); top: -150px; right: -150px; pointer-events: none; }
+  .hero::after { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: rgba(212,43,43,0.05); bottom: -100px; left: -100px; pointer-events: none; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,43,43,0.15); color: #ff6b6b; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; border: 0.5px solid rgba(212,43,43,0.3); }
+  .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.15; max-width: 700px; margin-bottom: 20px; color: var(--white); }
+  .hero h1 span { color: var(--red); }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.6); max-width: 520px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--red); color: #fff; padding: 14px 30px; border-radius: 10px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); padding: 14px 30px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
+  .hero-stats { display: flex; gap: 0; margin-top: 60px; background: var(--dark2); border-radius: var(--radius); border: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; justify-content: center; overflow: hidden; }
+  .stat { text-align: center; padding: 24px 36px; border-right: 0.5px solid rgba(255,255,255,0.08); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--red); }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; font-weight: 500; }
+
+  /* MARQUEE */
+  .marquee-wrap { padding: 18px 0; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); overflow: hidden; background: var(--gray-light); }
+  .marquee-inner { display: flex; gap: 48px; animation: scroll 22s linear infinite; white-space: nowrap; width: max-content; }
+  .marquee-item { font-size: 13px; font-weight: 600; color: var(--gray); display: flex; align-items: center; gap: 8px; }
+  .marquee-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); display: inline-block; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION COMMON */
+  section { padding: 80px 40px; }
+  .section-label { font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 14px; color: var(--black); }
+  .section-sub { font-size: 16px; color: var(--gray); max-width: 520px; line-height: 1.7; }
+  .section-head { margin-bottom: 48px; }
+  .red-divider { height: 3px; background: var(--red); width: 48px; margin: 16px 0 0; border-radius: 2px; }
+
+  /* SERVICES */
+  .services { background: var(--gray-light); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .service-card { background: var(--white); border-radius: var(--radius); border: 0.5px solid var(--gray-mid); padding: 28px 24px; transition: all 0.25s; cursor: default; }
+  .service-card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(212,43,43,0.1); }
+  .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--red-light); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 22px; color: var(--red); }
+  .service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--black); }
+  .service-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* PROCESS */
+  .process { background: var(--black); }
+  .process .section-title { color: var(--white); }
+  .process .section-sub { color: rgba(255,255,255,0.5); }
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 28px; left: 10%; width: 80%; height: 1px; background: rgba(255,255,255,0.1); }
+  .step { text-align: center; padding: 0 16px; position: relative; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--red); color: #fff; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+  .step p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* RESULTS */
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .result-card { border-radius: var(--radius); padding: 28px; }
+  .result-card.light { background: var(--gray-light); }
+  .result-card.mid { background: var(--gray-mid); }
+  .result-card.dark { background: var(--dark); color: #fff; }
+  .result-card.red { background: var(--red); color: #fff; }
+  .result-num { font-size: 42px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+  .result-card.light .result-num { color: var(--red); }
+  .result-card.mid .result-num { color: var(--black); }
+  .result-card.dark .result-num { color: rgba(255,255,255,0.8); }
+  .result-card.red .result-num { color: rgba(255,255,255,0.85); }
+  .result-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .result-card p { font-size: 13px; line-height: 1.6; opacity: 0.65; }
+  .result-card.dark h4 { color: var(--white); }
+  .result-card.red h4 { color: var(--white); }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--gray-light); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .tcard { background: var(--white); border: 0.5px solid var(--gray-mid); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; }
+  .tcard:hover { border-color: var(--red); }
+  .stars { color: var(--red); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+  .tcard p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+  .tauthor { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .tname { font-size: 14px; font-weight: 700; color: var(--black); }
+  .trole { font-size: 12px; color: var(--gray); }
+
+  /* CTA */
+  .cta-section { background: var(--black); text-align: center; border-radius: 20px; margin: 0 40px 80px; padding: 70px 40px; border: 0.5px solid rgba(255,255,255,0.07); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: rgba(212,43,43,0.1); top: -100px; right: -80px; pointer-events: none; }
+  .cta-section h2 { font-size: 38px; font-weight: 800; margin-bottom: 14px; color: var(--white); position: relative; }
+  .cta-section h2 span { color: var(--red); }
+  .cta-section p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 32px; position: relative; }
+  .btn-red { background: var(--red); color: #fff; padding: 14px 32px; border-radius: 10px; border: none; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: var(--black); color: rgba(255,255,255,0.55); padding: 48px 40px 28px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .footer-logo { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+  .footer-logo span { color: var(--red); }
+  .footer-desc { font-size: 13px; line-height: 1.7; }
+  .footer-col h5 { font-size: 12px; font-weight: 700; color: var(--gray-mid); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--red); }
+  .footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { font-size: 12px; }
+  .socials { display: flex; gap: 10px; }
+  .social-btn { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 16px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px 50px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 15px; }
+    section { padding: 60px 20px; }
+    .section-title { font-size: 26px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .cta-section { margin: 0 20px 60px; padding: 48px 24px; }
+    .cta-section h2 { font-size: 26px; }
+    .hero-stats { gap: 0; }
+    .stat { padding: 18px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Click<span>tasol</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Results</a></li>
+    <li><a href="#">Process</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <button class="nav-cta">Get in Touch Now</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">&#9889; #1 Digital Marketing Partner in the Pacific</div>
+  <h1>Grow Faster With <span>Data-Driven</span> Digital Marketing</h1>
+  <p>Clicktasol helps ambitious brands dominate search, social, and paid ads — turning clicks into customers and campaigns into revenue.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">Start Growing Today &rarr;</button>
+    <button class="btn-outline">See Our Results</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Clients Served</div></div>
+    <div class="stat"><div class="stat-num">$12M+</div><div class="stat-label">Revenue Generated</div></div>
+    <div class="stat"><div class="stat-num">94%</div><div class="stat-label">Client Retention</div></div>
+    <div class="stat"><div class="stat-num">5x</div><div class="stat-label">Average ROAS</div></div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="marquee-dot"></span>Google Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>SEO &amp; Content</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Social Media</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Email Marketing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>TikTok Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Analytics</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>CRO</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Brand Strategy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Google Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>SEO &amp; Content</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Social Media</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Email Marketing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>TikTok Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Analytics</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>CRO</span>
+  </div>
+</div>
+
+<section class="services">
+  <div class="section-head">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Full-Stack Digital Marketing</div>
+    <div class="red-divider"></div>
+    <div class="section-sub" style="margin-top:18px">Every service is built around one goal: measurable growth for your business.</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#128269;</div>
+      <h3>SEO &amp; Content</h3>
+      <p>Rank higher, get found, and drive organic traffic that converts — month after month.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127760;</div>
+      <h3>Google Ads (PPC)</h3>
+      <p>High-intent campaigns that put your brand in front of buyers the moment they search.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128241;</div>
+      <h3>Meta &amp; Social Ads</h3>
+      <p>Scroll-stopping creatives and precise audience targeting on Facebook, Instagram &amp; TikTok.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9993;</div>
+      <h3>Email Marketing</h3>
+      <p>Automated sequences and campaigns that nurture leads and drive repeat purchases.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128200;</div>
+      <h3>Analytics &amp; CRO</h3>
+      <p>Turn data into decisions. We optimize every funnel touchpoint to maximize revenue.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128187;</div>
+      <h3>Web Design &amp; Dev</h3>
+      <p>Fast, conversion-focused websites that look stunning and rank on Google.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="section-head">
+    <div class="section-label">Our Process</div>
+    <div class="section-title">From Strategy to Scale</div>
+    <div class="section-sub">A proven 4-step process that eliminates guesswork and delivers results.</div>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Discover</h4>
+      <p>Deep-dive audit of your brand, competitors, and market opportunities.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Strategize</h4>
+      <p>Custom growth roadmap tailored to your goals, budget, and timeline.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Execute</h4>
+      <p>Launch campaigns across channels with precision targeting and creative.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Optimize</h4>
+      <p>Continuous testing, reporting, and scaling what drives the best ROI.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-label">Real Results</div>
+    <div class="section-title">Numbers That Matter</div>
+    <div class="red-divider"></div>
+    <div class="section-sub" style="margin-top:18px">We let the data do the talking.</div>
+  </div>
+  <div class="results-grid">
+    <div class="result-card light">
+      <div class="result-num">340%</div>
+      <h4>Increase in Organic Traffic</h4>
+      <p>For a local e-commerce brand in 6 months using our SEO framework.</p>
+    </div>
+    <div class="result-card mid">
+      <div class="result-num">5.8x</div>
+      <h4>Return on Ad Spend</h4>
+      <p>Delivered for a product brand running Google + Meta campaigns.</p>
+    </div>
+    <div class="result-card dark">
+      <div class="result-num">$2.4M</div>
+      <h4>Revenue Generated</h4>
+      <p>For a single client over a 12-month digital growth partnership.</p>
+    </div>
+    <div class="result-card red">
+      <div class="result-num">-42%</div>
+      <h4>Cost Per Lead</h4>
+      <p>Reduced through CRO and landing page optimization strategies.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-head">
+    <div class="section-label">Testimonials</div>
+    <div class="section-title">Clients Love Working With Us</div>
+    <div class="red-divider"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Clicktasol transformed our online presence. Our lead volume tripled within 3 months — we've never seen results like this."</p>
+      <div class="tauthor"><div class="avatar">JM</div><div><div class="tname">James M.</div><div class="trole">CEO, RetailPro PNG</div></div></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"The team is strategic, transparent, and genuinely cares about results. Our Google Ads ROAS went from 1.8x to 6x in 4 months."</p>
+      <div class="tauthor"><div class="avatar">SL</div><div><div class="tname">Sarah L.</div><div class="trole">Marketing Manager, Apex Brands</div></div></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Best marketing investment we've made. Clicktasol doesn't just run ads — they understand the whole customer journey."</p>
+      <div class="tauthor"><div class="avatar">DK</div><div><div class="tname">David K.</div><div class="trole">Founder, Kula E-Commerce</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Ready to <span>Grow</span> Your Business?</h2>
+  <p>Get a free audit and discover exactly what's holding your digital marketing back.</p>
+  <button class="btn-red">Book Your Free Strategy Call &rarr;</button>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Click<span>tasol</span></div>
+      <p class="footer-desc">Your results-driven digital marketing partner. We help brands grow smarter, faster, and with more impact.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#">SEO &amp; Content</a>
+      <a href="#">Google Ads</a>
+      <a href="#">Social Media</a>
+      <a href="#">Email Marketing</a>
+      <a href="#">Web Design</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#">About Us</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:clicktasol@gmail.com">clicktasol@gmail.com</a>
+      <a href="tel:+675 72563063">+675 72563063</a>
+      <a href="#">Port Moresby, PNG</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Clicktasol. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" class="social-btn" aria-label="Facebook">f</a>
+      <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+      <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+      <a href="#" class="social-btn" aria-label="TikTok">tt</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
